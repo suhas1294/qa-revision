@@ -14,13 +14,6 @@ public class BaseTest {
 		public String baseUrl;
 		
 		public BaseTest() {
-				try {
-						config = new PropertyReader("config.properties").readPropertyFile();
-						driver = new DriverFactory().getDriver(config.getProperty("testInBrowser"));
-						this.baseUrl = config.getProperty("baseUrl");
-				} catch (IOException e) {
-						log.severe("Unable to initialise the driver");
-				}
 		}
 		
 		@BeforeSuite
@@ -30,6 +23,13 @@ public class BaseTest {
 		
 		@BeforeClass
 		public void dataSetup(){
+				try {
+						config = new PropertyReader("config.properties").readPropertyFile();
+						driver = new DriverFactory().getDriver(config.getProperty("testInBrowser"));
+						this.baseUrl = config.getProperty("baseUrl");
+				} catch (IOException e) {
+						log.severe("Unable to initialise the driver");
+				}
 				log.info("Inside before class");
 		}
 		
