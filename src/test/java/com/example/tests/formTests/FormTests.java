@@ -1,10 +1,13 @@
 package com.example.tests.formTests;
 
 import com.example.base.BaseTest;
+import com.example.listeners.TestListener;
 import com.example.pages.IndexFormPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+//@Listeners(TestListener.class)
 public class FormTests extends BaseTest {
 		public FormTests(){
 				super();

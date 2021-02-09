@@ -1,10 +1,14 @@
 package com.example.tests.authTests;
 
 import com.example.base.BaseTest;
+import com.example.listeners.TestListener;
 import com.example.pages.IndexFormPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+//@Listeners(TestListener.class)
 public class AuthenticationTests extends BaseTest {
 		public AuthenticationTests(){
 				super();
@@ -28,5 +32,6 @@ public class AuthenticationTests extends BaseTest {
 				// test steps
 				navigateToBaseUrl();
 				indexFormPage.writeAddress("this is my address");
+				Assert.fail("Failing this test intentionally !");
 		}
 }
