@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>html</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <!--This commented line should be replaced with embed url-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+   <!-- navigation -->
+  <div style="margin: 2% 5% 2% 5%;">
+    <div style="border: 1px solid black; padding-left: 2%;" id="navigation"></div>
+    <br>Numbers only: <input type="text" name="quantity1"><br>
+    <br>Numbers only (char length : max 5): <input type="text" name="quantity2"><br>
+    <!-- <br>Char length (min 3): <input type="text" name="number_1"><br> -->
+    <br>Char length (min 3, max 5): <input type="text" name="charInput"><br>
+    <!-- <br>Char length (max 6): <input type="text" name="number_3"><br> -->
+    <br>Email addr: <input  style="margin-left: 5%;" type="text" name="email"><br>
+    <br>Web addr: <input style="margin-left: 5%;" type="text" name="webaddr"><br>
+    <br> <h3>Date formats:</h3>
+    <br>dd/mm/yy <input style="margin-left: 5%;" type="text" name="dd_mm_yy"><br>
+    <br>dd/mm/yyyy <input style="margin-left: 5%;" type="text" name="dd_mm_yyyy"><br>
+    <br>yyyy/mm/dd <input style="margin-left: 5%;" type="text" name="yyyy_mm_dd"><br>
+    <br>yy/mm/dd <input style="margin-left: 5%;" type="text" name="yy_mm_dd"><br>
+    <br>mm/dd/yy <input style="margin-left: 5%;" type="text" name="mm_dd_yy"><br>
+    <br>mm/dd/yyyy <input style="margin-left: 5%;" type="text" name="mm_dd_yyyy"><br>
+    <select id="lang">
+    <option value="java">java</option>
+    <option value="ruby">ruby</option>
+    <option value="python">python</option>
+    <option value="golang">golang</option>
+    </select>
+    <br><br>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  $(function() {
+    $("#navigation").load("navigation.html");
+  });
+</script>

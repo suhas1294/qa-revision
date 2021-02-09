@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--This commented line should be replaced with embed url-->
+</head>
+<body>
+  <style type="text/css">
+  body
+  {
+    font-family:sans-serif;
+  }
+</style>
+<h4>This is Inside first IFRAME - 1</h4>
+<p><label for="range_weight">Weight: </label> <input type="range" name="weight"  class="slider" min="0" max="100" value="75">
+  <span  class="slider_label"></span></p>
+  <div id="scrolldiv"></div>
+  <h4>article</h4>
+  <a href="#"> another page</a>
+  <iframe src="isrc2.html" id="iframe2" style="border: 1px solid red; margin: 15px 15px 15px 15px;" height="200" width="500"></iframe>
+</body>
+<script type="text/javascript">
+  $(function()
+  {
+    $('.slider').on('input change', function(){
+      $(this).next($('.slider_label')).html(this.value);
+    });
+    $('.slider_label').each(function(){
+      var value = $(this).prev().attr('value');
+      $(this).html(value);
+    });
+  })
+</script>
+</html>
+<script type="text/javascript">
+  $(function() {
+    $("#navigation").load("navigation.html");
+    var i;
+    var br = "<br>"
+    for (i = 0; i < 50; i++) {
+      br += "<br>";
+    }
+    $("#scrolldiv").html(br);
+  });
+</script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="  Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title>html</title>
+  <!--This commented line should be replaced with embed url-->
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="shortcut icon" href="#" />
+</head>
+<body>
+  <div style="margin: 2% 5% 2% 5%;">
+    <div style="border: 1px solid black; padding-left: 2%;" id="navigation"></div>
+
+    <h1>Form</h1>
+    <hr>
+    First name: <input type="text" name="fname"><br>
+    last name: <input type="text" name="lname"><br>
+    Address: <textarea rows="4" id="address" cols="50"></textarea><br>
+    Description: <textarea rows="4" id="" cols="50"></textarea><br>
+    Summary: <textarea name="Summary" id="summary" rows="4" cols="50"></textarea><br>
+    <br>
+    <input type="radio" name="gender" value="male" checked> Male<br>
+    <input type="radio" name="gender" value="female"> Female<br>
+    <input type="radio" name="gender" value="other"> Other<br><br>
+    <div style="margin-left: 10%;">
+      <input type="checkbox" name="vehicle" value="Bike">I have a bike<br>
+      <input type="checkbox" name="vehicle" value="Car">I have a car
+    </div>
+    <br><br>
+
+    <select id="vehicle">
+      <option value="volvo">Volvo</option>
+      <option value="saab">suzuki</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+    <br><br>
+    <select id="sub">
+      <option value="physics">physics</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="biology">biology</option>
+      <option value="Maths">Maths</option>
+    </select>
+    <br><br>
+    <select id="fruits">
+      <option value="Mango">Mango</option>
+      <option value="Apple">Apple</option>
+      <option value="banana">banana</option>
+      <option value="strawberry">strawberry</option>
+    </select>
+    <hr>
+
+    <div style="border: 1px solid black;padding: 1% 1% 1% 1%;">
+      <h4>Beacon collection 1</h4>
+      <ul>
+        <li style="padding: 1% 5% 1% 5%;"><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+        <li style="padding: 1% 5% 1% 5%;"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i></a></li>
+        <li style="padding: 1% 5% 1% 5%;"><a href="#"><i class="fa fa-info" id="more-info" aria-hidden="true"></i></a></li>
+        <br><br>Some Text 2: <input type="text" name="quantity1"><br><br>
+      </ul>
+    </div>
+
+    <br><br>
+    <p id="username">FooBar</p>
+    <p id="phone">911</p>
+    <hr>
+    <div id="dynamic-btn"></div>
+
+
+    <h1>Paragraph Heading</h1>
+    <p>Sunt labore ea sunt sit laboris nisi nisi in ullamco culpa mollit veniam eu culpa ut mollit cillum ut irure adipisicing dolor dolor dolor amet ut dolore incididunt ut deserunt aliqua ut nulla voluptate eu in deserunt anim nulla ad dolore aliqua velit in nostrud ut irure reprehenderit amet sed irure sint sit culpa esse mollit reprehenderit quis officia aute proident pariatur dolore nostrud eiusmod sint in ex in id officia ut ut labore dolor fugiat et sit in est voluptate cupidatat tempor incididunt cillum proident minim et nisi esse amet ullamco eiusmod do incididunt ullamco in ex eiusmod commodo esse quis occaecat consectetur in ea eu voluptate excepteur eu irure et culpa commodo anim velit sint in in non non dolore officia magna eu fugiat tempor est minim reprehenderit nisi reprehenderit ut sunt ut commodo est sit voluptate voluptate nisi cupidatat sunt in dolor tempor ad magna proident esse ut exercitation duis reprehenderit consequat in est mollit eu in.</p>
+
+    <marquee>A scrolling text created with HTML Marquee element.</marquee>
+
+    <button onclick="myFunction()">Alert Button</button><br>
+    <button id="myBtn">Open Modal</button><br>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+    </div>
+    <button name="add_button" value="Add New" id="add_button" onclick="addButton()"> Create dynamic element </button>
+    <div id="object_data"></div>
+  </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+  $(function() {
+    $("#navigation").load("navigation.html");
+  });
+
+  // window variable more options
+  var num1 = 25;
+  var num2 = 100;
+  var oneYear = 3.154e+10;
+  var role = 'Manager';
+  var UiTesting = "test";
+
+  // string dates
+  var d1 = "09/26/2018"; // sep 26th
+  var d2 = "10/15/2018"; // oct 15th
+  // var missing = 45;
+
+  // date objects
+  var d3 = new Date(); // current date and time
+  var d4 = new Date(1538632506000); // Thursday, October 4, 2018 5:55:06 AM
+  var d5 = new Date("October 10, 2018 11:13:00"); // string
+  var d6 = new Date(2018, 9, 2); //(year, month, day) oct 2nd 2018
+  var d7 = new Date(2018, 9, 2, 13, 13, 13, 13); //(year, month, day, hours, minutes, seconds, milliseconds)
+
+  // define global variable i to loop the button click event as much as we want
+  var i = 1;
+
+
+  function myFunction() {
+    alert("I am an alert box!");
+  }
+
+  var modal = document.getElementById('myModal');
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+
+    function addButton(){
+
+    var new_line = document.createElement("br");
+    var new_line_2 = document.createElement("br");
+
+    // these both of the lines will create dynamically new lines before putting any new textbox and button control.
+
+    // create new text box control below using attribute of input type text box and assign name and id dynamically by using variable i defined as global variable above.
+
+    var textbox = document.createElement("input");
+    textbox.type= "text";
+    textbox.name= "txt_" + i;
+    textbox.id= "txtid" + i;
+    textbox.placeholder ="txt_"+i;
+
+    var btn = document.createElement("input");
+    btn.type = "button";
+    btn.name = "button"+i;
+    btn.value = "Click Me";
+    btn.id = "id"+i;
+
+    // assign click event for each new button element created dynamically using attribiute of input type button and assign name and id dynamically using variable i defined as global variable above.
+
+    btn.setAttribute("onClick","showMessage()");
+
+    //on click on every newly created button a "showMessage" javascript function will call, which will show us the value of their corresponding text box.
+
+    // assign both of these textbox and button controls to blank div by id "object_data" in html document using below code.
+
+    document.getElementById("object_data").appendChild(textbox);
+    document.getElementById("object_data").appendChild(btn);
+    document.getElementById("object_data").appendChild(new_line);
+    document.getElementById("object_data").appendChild(new_line_2);
+
+
+    i++ //increment the counter
+    }
+
+  var btn = document.createElement("BUTTON");
+  btn.innerHTML = "Dynamic button";
+  btn.setAttribute("id", "dynamicBtn")
+  document.getElementById("dynamic-btn").appendChild(btn);
+</script>
+</html>
+<!-- article/slideshow will be pasted below this comment line-->

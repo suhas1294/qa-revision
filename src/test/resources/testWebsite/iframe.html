@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>html</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <!--This commented line should be replaced with embed url-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+  <div style="margin: 2% 5% 2% 5%;">
+    <!-- navigation -->
+    <div style="border: 1px solid black; padding-left: 2%;" id="navigation"></div>
+    <select id="alpha">
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    </select>
+    <br><br>
+    <div style="border: 1px solid black; padding: 1% 1% 1% 1%;">
+    <h4>Beacon collection 2</h4>
+    <li style="padding: 1% 5% 1% 5%;"><a href="#"><i id="bell-icon" class="fa fa-bell" aria-hidden="true"></i></a></li>
+    <li style="padding: 1% 5% 1% 5%;"><a href="#"><i class="fa fa-battery-full" aria-hidden="true"></i></a></li>
+    <li style="padding: 1% 5% 1% 5%;"><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i></a></li><br>
+    <br>Some Text 1: <input type="text" name="quantity"><br><br>
+    </div><br>
+    <iframe src="isrc.html" id="iframe1" height="300" width="600" style="border: 2px solid black;">  </iframe><br>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  $(function() {
+    $("#navigation").load("navigation.html");
+  });
+</script>
