@@ -3,7 +3,7 @@ import com.example.base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage {
+public class IndexFormPage extends BasePage {
 		@FindBy(id = "address")
 		private WebElement addressField;
 		
