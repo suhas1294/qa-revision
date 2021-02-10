@@ -55,3 +55,8 @@ running tests in parallel using maven-surefire-plugin: [link](https://www.youtub
 
 4. <ins>Why maven -surefire-plugin ?</ins>\
 Find answer [here.](https://stackoverflow.com/questions/33949658/why-surefire-plugin-is-need-in-maven)
+   
+
+5. How to read locally generated allure reports ?
+Run this command in the project root folder: `mvn allure: serve`\
+   more informatio here: https://github.com/allure-framework/allure-maven
