@@ -6,8 +6,8 @@
 	</listeners>
 	<test name="Login-tests">
 		<classes>
-			<class name="com.example.tests.authTests.AuthenticationTests" />
-			<class name="com.example.tests.formTests.FormTests" />
+				<class name="com.example.tests.formTests.FormTests" />
+				<class name="com.example.tests.authTests.AuthenticationTests" />
 		</classes>
 	</test>
 </suite>
