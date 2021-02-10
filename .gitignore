@@ -1,3 +1,5 @@
 .idea/
 qa-revision.iml
 target/
+.allure
+.DS_Store

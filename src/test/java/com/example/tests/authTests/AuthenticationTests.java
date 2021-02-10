@@ -3,6 +3,8 @@ package com.example.tests.authTests;
 import com.example.base.BaseTest;
 import com.example.listeners.TestListener;
 import com.example.pages.IndexFormPage;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
@@ -15,6 +17,7 @@ public class AuthenticationTests extends BaseTest {
 		}
 		
 		@Test(description = "test to check login functionality")
+		@Severity(SeverityLevel.CRITICAL)
 		public void loginTest(){
 				// page initialisations
 				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
@@ -25,6 +28,7 @@ public class AuthenticationTests extends BaseTest {
 		}
 		
 		@Test(description = "test to check logout functionality")
+		@Severity(SeverityLevel.MINOR)
 		public void logoutTest(){
 				// page initialisations
 				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);

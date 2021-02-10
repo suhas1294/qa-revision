@@ -1,6 +1,11 @@
 package com.example.listeners;
 
+import com.example.base.BaseTest;
+import io.qameta.allure.Attachment;
 import lombok.extern.java.Log;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.*;
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +17,18 @@ public class TestListener implements ITestListener, ISuiteListener, IExecutionLi
 		private int suiteFailedTests;
 		private int suiteSkippedTests;
 		private long startTime;
+		
+		@Attachment(value = "page_screenshot", type = "image/png")
+		public byte[] saveScreenshotPNG(WebDriver driver){
+				return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+		}
+		
+		
+		@Attachment(value = "Text logs", type = "text/plain")
+		public String saveTextlogs(String message){
+				return message;
+		}
+		
 		
 		// Method to convert epoche time to human readable time
 		private String time(long millis) {
@@ -58,6 +75,10 @@ public class TestListener implements ITestListener, ISuiteListener, IExecutionLi
 		@Override
 		public void onTestFailure(ITestResult result) {
 				String methodName = result.getName().trim();
+				WebDriver driver = BaseTest.getDriver();
+				log.warning(String.format("Test %s failed, taking screenshot", methodName));
+				saveScreenshotPNG(driver);
+				saveTextlogs(result.getThrowable().toString());
 				log.info(String.format("%s failed with error: %s", methodName, result.getThrowable().toString()));
 		}
 		

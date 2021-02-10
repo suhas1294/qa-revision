@@ -13,6 +13,10 @@
 		<!--<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>-->
 		<java.version>1.8</java.version>
+		
+		<!--for allure reporting-->
+		<aspectj.version>1.8.10</aspectj.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
 	
@@ -36,6 +40,13 @@
 			<scope>provided</scope>
 		</dependency>
 		
+		<!--for allure reporting-->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>2.13.1</version>
+		</dependency>
+		
 	</dependencies>
 	
 	<build>
@@ -48,7 +59,38 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-		</plugins>
+			
+			<!--aspectj is plugin used along with maven surefire plugin for supporting allure report generation-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.20</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/test-suites/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<argLine>
+						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjweaver</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			
+			<!--without allure plugin, following error is seen:
+			[ERROR] No plugin found for prefix 'allure' in the current project and in the plugin
+			groups [org.apache.maven.plugins, org.codehaus.mojo] available from the repositories-->
+			<plugin>
+				<groupId>io.qameta.allure</groupId>
+				<artifactId>allure-maven</artifactId>
+				<version>2.9</version>
+			</plugin>
+			
+			</plugins>
 	</build>
-
 </project>

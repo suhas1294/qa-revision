@@ -9,22 +9,38 @@ import java.util.Properties;
 
 @Log
 public class BaseTest {
-		protected WebDriver driver;
-		Properties config;
+		// driver object is made static since it will be shared with listener class for taking screenshot
+		protected static WebDriver driver;
+		protected static Properties config;
 		public String baseUrl;
 		
+		public static WebDriver getDriver(){
+				if (driver == null){
+						try {
+								return new DriverFactory().getDriver(config.getProperty("testInBrowser"));
+						} catch (IOException e) {
+								e.printStackTrace();
+						}
+				}
+				return driver;
+		}
+		
 		public BaseTest() {
+				try {
+						config = new PropertyReader("config.properties").readPropertyFile();
+				} catch (IOException e) {
+						e.printStackTrace();
+				}
 		}
 		
 		@BeforeSuite
-		public void dataCleanUp(){
+		public void dataCleanUp()  {
 				log.info("Inside before suite");
 		}
 		
 		@BeforeClass
 		public void dataSetup(){
 				try {
-						config = new PropertyReader("config.properties").readPropertyFile();
 						driver = new DriverFactory().getDriver(config.getProperty("testInBrowser"));
 						this.baseUrl = config.getProperty("baseUrl");
 				} catch (IOException e) {
