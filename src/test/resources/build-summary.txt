@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+	<html>
+		<head><title>Summary Report</title><meta charset="utf-8" /></head>
+		<body>
+			<h4> BUILD URL::</h4><blockquote>{{BUILD_URL}}</blockquote>
+			<h4> BUILD ENVIRONMENT::</h4><blockquote>{{ENVIRONMENT}}</blockquote>
+			<h4> BUILD DURATION::</h4><blockquote>{{DURATION}}</blockquote>
+			<h4> BUILD SUMMARY</h4><blockquote>{{SUMMARY}}</blockquote>
+		</body>
+</html>

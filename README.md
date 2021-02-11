@@ -67,3 +67,12 @@ Use command: `mvn  test -DsuiteXmlFile=static_data_test`\
    make sure to add following config in **pom.xml** file:
    ```
    <suiteXmlFile>src/test/resources/test-suites/${suiteXmlFile}.xml</suiteXmlFile>```
+   
+
+7.How to configure environment variables in intellij while running tests in local ? (this is to mimic properties passed from jenkins)
+![alt text](src/test/resources/intellij_set_env_variables.png)
+These properties will be fetched in code by using `System.getProperty("browser");`
+
+8.How to generate report and send over mail ?\
+Once the suite file is run, report will be automatically generated because of the logic written in `onExecutionFinish()` of TestListener class.\
+This automatically generated file can be used by jenkins job to send the mail report. (In jenkins script is written to do so.)
