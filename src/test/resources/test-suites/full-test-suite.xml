@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Full test suite" preserve-order="true">
+		<listeners>
+				<listener class-name="com.example.listeners.TestListener"></listener>
+		</listeners>
+		<test name="All tests of application">
+				<classes>
+						<class name="com.example.tests.formTests.FormTests" />
+						<class name="com.example.tests.formTests.DataFormTests" />
+						<class name="com.example.tests.authTests.AuthenticationTests" />
+				</classes>
+		</test>
+</suite>

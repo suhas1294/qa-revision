@@ -1,6 +1,9 @@
 package com.example.base;
 
+import com.example.model.Config;
+import com.example.model.TestData;
 import com.example.utils.PropertyReader;
+import com.example.utils.YamlReader;
 import lombok.extern.java.Log;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -13,6 +16,8 @@ public class BaseTest {
 		protected static WebDriver driver;
 		protected static Properties config;
 		public String baseUrl;
+		protected static TestData testData;
+		protected static Config configData;
 		
 		public static WebDriver getDriver(){
 				if (driver == null){
@@ -27,6 +32,8 @@ public class BaseTest {
 		
 		public BaseTest() {
 				try {
+						testData = new YamlReader("test-data/test_data.yaml").readTestData();
+						configData = new YamlReader("test-data/config.yaml").readConfig();
 						config = new PropertyReader("config.properties").readPropertyFile();
 				} catch (IOException e) {
 						e.printStackTrace();

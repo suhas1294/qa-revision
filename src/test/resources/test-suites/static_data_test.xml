@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Static data tests" preserve-order="true">
+		<listeners>
+				<listener class-name="com.example.listeners.TestListener"></listener>
+		</listeners>
+		
+		<!--another way of passing data from suite xml file to tests-->
+		<parameter name="isPremiumAccount" value="true" />
+		<parameter name="isAccountSuspended" value="true" />
+		
+		<test name="Data provider tests">
+				<classes>
+						<class name="com.example.tests.formTests.DataFormTests" />
+				</classes>
+		</test>
+</suite>

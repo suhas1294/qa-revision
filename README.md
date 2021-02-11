@@ -27,7 +27,7 @@ Right click on xml file where tests are defined and click on run.
    
 
 3. <ins>How to run single test from terminal ?</ins>\
-**Solution**: Try running `mvn test -Dtest=com.example.tests.formTests.FormTests` But if you find any issues with jdk version, add mvn compiler plugin in your pom file as below.\
+**Solution**: Try running `mvn test -Dtest=com.example.tests.formTests.FormTests` But if you find any issues with jdk version, add mvn compiler plugin in your pom file as below.
    ```
    <plugin>
     <artifactId>maven-compiler-plugin</artifactId>
@@ -44,7 +44,7 @@ Right click on xml file where tests are defined and click on run.
     <maven.compiler.source>1.8</maven.compiler.source>
    </properties>
    ```
-   One interesting thing we see in terminal logs is: \
+   One interesting thing we see in terminal logs is: 
    ```
    [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ qa-revision ---
    [INFO] Surefire report directory: /Users/<username>/workspace/testing/qa-revision/target/surefire-reports
@@ -60,3 +60,10 @@ Find answer [here.](https://stackoverflow.com/questions/33949658/why-surefire-pl
 5. How to read locally generated allure reports ?
 Run this command in the project root folder: `mvn allure: serve`\
    more informatio here: https://github.com/allure-framework/allure-maven
+   
+
+6. How to run a specific suite xml file containing selected tests ?\
+Use command: `mvn  test -DsuiteXmlFile=static_data_test`\
+   make sure to add following config in **pom.xml** file:
+   ```
+   <suiteXmlFile>src/test/resources/test-suites/${suiteXmlFile}.xml</suiteXmlFile>```
