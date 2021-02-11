@@ -1,0 +1,2 @@
+browserMode: "incognito"
+testEnv: "staging"
