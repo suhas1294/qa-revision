@@ -8,4 +8,7 @@ import lombok.Setter;
 public class Config {
 		private String testEnv;
 		private String browserMode;
+		private int timeoutForWait;
+		private int pollingDuration;
+		private int explicitTimeOut;
 }

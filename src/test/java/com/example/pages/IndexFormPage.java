@@ -1,10 +1,15 @@
 package com.example.pages;
 import com.example.base.BasePage;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class IndexFormPage extends BasePage {
+		public IndexFormPage(WebDriver driver) {
+				super(driver);
+		}
+		
 		@FindBy(id = "address")
 		private WebElement addressField;
 		

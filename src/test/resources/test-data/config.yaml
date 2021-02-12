@@ -1,2 +1,5 @@
 browserMode: "incognito"
 testEnv: "staging"
+timeoutForWait: 40
+pollingDuration: 500
+explicitTimeOut: 90
