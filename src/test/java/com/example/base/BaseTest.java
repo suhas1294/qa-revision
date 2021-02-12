@@ -13,31 +13,24 @@ import java.util.Properties;
 @Log
 public class BaseTest {
 		// driver object is made static since it will be shared with listener class for taking screenshot
-		protected static WebDriver driver;
-		protected static Properties config;
+		protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+		protected static ThreadLocal<Properties> config = new ThreadLocal<>();
 		public String baseUrl;
-		protected static TestData testData;
-		protected static Config configData;
+		protected static ThreadLocal<TestData> testData = new ThreadLocal<>();
+		protected static ThreadLocal<Config> configData = new ThreadLocal<>();
 		
 		public static WebDriver getDriver(){
 				if (driver == null){
 						try {
-								return new DriverFactory().getDriver(config.getProperty("testInBrowser"));
+								driver.set(new DriverFactory().getDriver(config.get().getProperty("testInBrowser")));
 						} catch (IOException e) {
 								e.printStackTrace();
 						}
 				}
-				return driver;
+				return driver.get();
 		}
 		
 		public BaseTest() {
-				try {
-						testData = new YamlReader("test-data/test_data.yaml").readTestData();
-						configData = new YamlReader("test-data/config.yaml").readConfig();
-						config = new PropertyReader("config.properties").readPropertyFile();
-				} catch (IOException e) {
-						e.printStackTrace();
-				}
 		}
 		
 		@BeforeSuite
@@ -47,29 +40,36 @@ public class BaseTest {
 		
 		@BeforeClass
 		public void dataSetup(){
-				try {
-						driver = new DriverFactory().getDriver(config.getProperty("testInBrowser"));
-						this.baseUrl = config.getProperty("baseUrl");
-				} catch (IOException e) {
-						log.severe("Unable to initialise the driver");
-				}
 				log.info("Inside before class");
 		}
 		
 		@BeforeTest
-		public void testDataSetup(){
+		public void testDataSetup() throws IOException {
+				/**
+				 * In parallel-tests.xml we have specified parallel as tests and thread count as 4, hence tests will
+				 * be executed in parallel and in beforeTest we are assigning each thread its own data, so in this case,
+				 * 4 threads will have its own data.
+ 				 */
+				log.info(String.format("current thread name:\t %s", Thread.currentThread().getName()));
+				
+				testData.set(new YamlReader("test-data/test_data.yaml").readTestData());
+				configData.set(new YamlReader("test-data/config.yaml").readConfig());
+				config.set(new PropertyReader("config.properties").readPropertyFile());
+				driver.set(new DriverFactory().getDriver(config.get().getProperty("testInBrowser")));
+				this.baseUrl = config.get().getProperty("baseUrl");
+				
 				log.info("************** Starting test **************");
 		}
 		
 		@AfterTest
 		public void testDataCleanup(){
 				log.info("************** completed test **************");
+				driver.get().quit();
 		}
 		
 		@AfterClass(alwaysRun=true)
 		public void classDataCleaner(){
 				log.info("inside after class");
-				driver.quit();
 		}
 		
 		@AfterSuite
@@ -78,6 +78,6 @@ public class BaseTest {
 		}
 		
 		public void navigateToBaseUrl(){
-				driver.navigate().to(baseUrl);
+				driver.get().navigate().to(baseUrl);
 		}
 }

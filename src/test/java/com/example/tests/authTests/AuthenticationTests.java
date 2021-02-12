@@ -16,11 +16,33 @@ public class AuthenticationTests extends BaseTest {
 				super();
 		}
 		
-		@Test(description = "test to check login functionality")
+		@Test(description = "test to check login using email functionality")
 		@Severity(SeverityLevel.CRITICAL)
-		public void loginTest(){
+		public void loginThroughEmailTest(){
 				// page initialisations
-				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
+				
+				// test steps
+				navigateToBaseUrl();
+				indexFormPage.writeSummary("this is my summary");
+		}
+		
+		@Test(description = "test to check login using username functionality")
+		@Severity(SeverityLevel.CRITICAL)
+		public void loginThroughUsernameTest(){
+				// page initialisations
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
+				
+				// test steps
+				navigateToBaseUrl();
+				indexFormPage.writeSummary("this is my summary");
+		}
+		
+		@Test(description = "test to check login using mobile & otp functionality")
+		@Severity(SeverityLevel.CRITICAL)
+		public void loginThroughMobileOtpTest(){
+				// page initialisations
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
 				
 				// test steps
 				navigateToBaseUrl();
@@ -31,7 +53,7 @@ public class AuthenticationTests extends BaseTest {
 		@Severity(SeverityLevel.MINOR)
 		public void logoutTest(){
 				// page initialisations
-				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
 				
 				// test steps
 				navigateToBaseUrl();

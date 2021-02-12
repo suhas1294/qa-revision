@@ -19,7 +19,7 @@ public class FormTests extends BaseTest {
 		@Severity(SeverityLevel.NORMAL)
 		public void fillSummaryField(){
 				// page initialisations
-				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
 				
 				// test steps
 				navigateToBaseUrl();
@@ -30,7 +30,7 @@ public class FormTests extends BaseTest {
 		@Severity(SeverityLevel.MINOR)
 		public void fillAddressField(){
 				// page initialisations
-				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
 				
 				// test steps
 				navigateToBaseUrl();

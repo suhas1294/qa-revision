@@ -29,16 +29,16 @@ public class DataFormTests extends BaseTest {
 		@Severity(SeverityLevel.NORMAL)
 		public void staticDataTest(){
 				// page initialisations
-				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
 				
 				// test steps
 				navigateToBaseUrl();
-				indexFormPage.writeSummary(testData.getSummary());
+				indexFormPage.writeSummary(testData.get().getSummary());
 		}
 		
 		@Test(description = "example test which utilises testng data provider", dataProvider = "scientists")
 		public void dataProviderExample(String personName, String field){
-				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
 				
 				// test steps
 				navigateToBaseUrl();
@@ -48,7 +48,7 @@ public class DataFormTests extends BaseTest {
 		@Parameters({"isPremiumAccount", "isAccountSuspended"})
 		@Test(description = "example usage of parameterised data provider from xml")
 		public void parameterisedAnnotation(@Optional("true") String isPremiumAccount,@Optional("does not matter") String isAccountSuspended ){
-				IndexFormPage indexFormPage = PageFactory.initElements(driver, IndexFormPage.class);
+				IndexFormPage indexFormPage = PageFactory.initElements(getDriver(), IndexFormPage.class);
 				
 				// test steps
 				navigateToBaseUrl();
