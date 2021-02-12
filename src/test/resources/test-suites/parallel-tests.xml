@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Full test suite" parallel="tests" thread-count="4">
+<suite name="Full test suite" parallel="classes" thread-count="4">
 		<listeners>
 				<listener class-name="com.example.listeners.TestListener"></listener>
 		</listeners>
-		<test name="Form tests">
+		<test name="All tests of application">
 				<classes>
 						<class name="com.example.tests.formTests.FormTests" />
-				</classes>
-		</test>
-		<test name="form with static data tests">
-				<classes>
 						<class name="com.example.tests.formTests.DataFormTests" />
-				</classes>
-		</test>
-		<test name="authentication tests">
-				<classes>
 						<class name="com.example.tests.authTests.AuthenticationTests" />
-				</classes>
-		</test>
-		<test name="forgot password tests">
-				<classes>
 						<class name="com.example.tests.authTests.ForgotPassword" />
 				</classes>
 		</test>

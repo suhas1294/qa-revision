@@ -4,32 +4,11 @@
 		<listeners>
 				<listener class-name="com.example.listeners.TestListener"></listener>
 		</listeners>
-		<!--multiple classes wrapped inside single test does not work after parallelism implementation-->
-		<!--<test name="All tests of application">
+		<test name="All tests of application">
 				<classes>
 						<class name="com.example.tests.formTests.FormTests" />
 						<class name="com.example.tests.formTests.DataFormTests" />
 						<class name="com.example.tests.authTests.AuthenticationTests" />
-						<class name="com.example.tests.authTests.ForgotPassword" />
-				</classes>
-		</test>-->
-		<test name="Form tests">
-				<classes>
-						<class name="com.example.tests.formTests.FormTests" />
-				</classes>
-		</test>
-		<test name="form with static data tests">
-				<classes>
-						<class name="com.example.tests.formTests.DataFormTests" />
-				</classes>
-		</test>
-		<test name="authentication tests">
-				<classes>
-						<class name="com.example.tests.authTests.AuthenticationTests" />
-				</classes>
-		</test>
-		<test name="forgot password tests">
-				<classes>
 						<class name="com.example.tests.authTests.ForgotPassword" />
 				</classes>
 		</test>
