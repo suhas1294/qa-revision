@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Full test suite" preserve-order="true" parallel="false">
+<suite name="Full test suite" parallel="tests" thread-count="4">
 		<listeners>
 				<listener class-name="com.example.listeners.TestListener"></listener>
 		</listeners>
-		<!--multiple classes wrapped inside single test does not work after parallelism implementation-->
-		<!--<test name="All tests of application">
-				<classes>
-						<class name="com.example.tests.formTests.FormTests" />
-						<class name="com.example.tests.formTests.DataFormTests" />
-						<class name="com.example.tests.authTests.AuthenticationTests" />
-						<class name="com.example.tests.authTests.ForgotPassword" />
-				</classes>
-		</test>-->
 		<test name="Form tests">
 				<classes>
 						<class name="com.example.tests.formTests.FormTests" />
