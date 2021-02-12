@@ -57,22 +57,75 @@ running tests in parallel using maven-surefire-plugin: [link](https://www.youtub
 Find answer [here.](https://stackoverflow.com/questions/33949658/why-surefire-plugin-is-need-in-maven)
    
 
-5. How to read locally generated allure reports ?
+5. <ins>How to read locally generated allure reports</ins> ?
 Run this command in the project root folder: `mvn allure: serve`\
    more informatio here: https://github.com/allure-framework/allure-maven
    
 
-6. How to run a specific suite xml file containing selected tests ?\
+6. <ins>How to run a specific suite xml file containing selected tests</ins> ?\
 Use command: `mvn  test -DsuiteXmlFile=static_data_test`\
    make sure to add following config in **pom.xml** file:
    ```
    <suiteXmlFile>src/test/resources/test-suites/${suiteXmlFile}.xml</suiteXmlFile>```
    
 
-7.How to configure environment variables in intellij while running tests in local ? (this is to mimic properties passed from jenkins)
+7. <ins>How to configure environment variables in intellij while running tests in local</ins> ? (this is to mimic properties passed from jenkins)
 ![alt text](src/test/resources/intellij_set_env_variables.png)
 These properties will be fetched in code by using `System.getProperty("browser");`
 
-8.How to generate report and send over mail ?\
+
+8. <ins>How to generate report and send over mail</ins> ?\
 Once the suite file is run, report will be automatically generated because of the logic written in `onExecutionFinish()` of TestListener class.\
 This automatically generated file can be used by jenkins job to send the mail report. (In jenkins script is written to do so.)
+
+   
+9. <ins>How to write xpaths</ins> ?
+```
+// selecting element by xpath
+Syntax:
+    @FindBy(xpath = "<refer_xpath_example>")
+Examples:
+    "//a[contains(@id,'some-unique-id')]"
+    "//a[contains(text(),'Login / Signup')]"
+    "//a[contains(@class,'ico-external-link')]/../a[contains(@href,'tags')]"
+    "//span[contains(@data-goto-page,'example-dasboard')]/../div"
+    "//i[contains(@class,'ico-spinner')]"
+    //a[contains(@id,'unique') or contains(@id,'unique2') or contains(@id,'unique3')]
+    
+    "//tbody/tr[4]/td/div"
+    "//table/tbody/tr[2]/td/table/tbody/tr[2]/td/div/table/tbody/tr/td)"
+    "//div[text()='Name']/../input"
+    
+    "//span[@data-goto-page='example-dasboard-crm']/input"
+    "//button[@class='aws-Button goButton']"
+    "//div[@id='color-colorbox']/a/div[2]"
+    "//div[@id='abc-dashboard-themeSettings-iconBg-colorbox']//a[contains(@style, 'display: block;overflow: visible;')]"
+    "//input[@placeholder = 'New Password']"
+    
+    "//a[@id='abc-dashboard-see-live']/../../preceding-sibling::td/div/div"
+    "//button[@id='colorsBack-3']/../following-sibling::div"
+    "//input[@id='email']/ancestor::tr/following-sibling::tr//div[contains(text(), 'Enter an email')]"
+    "//button[@title='Upload language files.']/../../div[2]//tr/td[1]//label"
+    
+    "//div[@id='unique']//p"
+    "//*[@id='fr-link-insert-layer-1']/div[4]/button"
+    //div[@id='abc-dashboard-settings-items']//img
+    "//b[text()='+']/.."
+    "//div//iframe"
+
+    "//td/input[@type='text' and @class='gwt-TextBox']"
+    "//label[.='First Step of Flow']"
+    "(//div[@class='fr-element fr-view']/p)[2]"
+    "//input[@checked][@name='Theme']/../label"
+
+  
+// selecting element by css selector
+Syntax:
+    @FindBy(css = "<refer_css_example>")
+Examples:
+    "p.SearchText"
+    "input[id*='fr-abcButton-insert-layer-url']"
+    "input#fr-link-insert-layer-url-2"
+    "#abc-beacon-tip table table table"
+
+```
