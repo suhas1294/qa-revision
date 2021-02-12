@@ -39,37 +39,35 @@ public class BaseTest {
 		}
 		
 		@BeforeClass
-		public void dataSetup(){
+		public void dataSetup() throws IOException{
 				log.info("Inside before class");
-		}
-		
-		@BeforeTest
-		public void testDataSetup() throws IOException {
 				/**
-				 * In parallel-tests.xml we have specified parallel as tests and thread count as 4, hence tests will
-				 * be executed in parallel and in beforeTest we are assigning each thread its own data, so in this case,
-				 * 4 threads will have its own data.
- 				 */
+				 * In parallel-tests.xml we have specified parallel as 'classes' and thread count as 4, hence each class
+				 * will be executed in parallel in different chrome instances and in beforeClass we are assigning each
+				 * thread its own data, so in this case, 4 threads will have its own data.
+				 */
 				log.info(String.format("current thread name:\t %s", Thread.currentThread().getName()));
-				
 				testData.set(new YamlReader("test-data/test_data.yaml").readTestData());
 				configData.set(new YamlReader("test-data/config.yaml").readConfig());
 				config.set(new PropertyReader("config.properties").readPropertyFile());
 				driver.set(new DriverFactory().getDriver(config.get().getProperty("testInBrowser")));
 				this.baseUrl = config.get().getProperty("baseUrl");
-				
+		}
+		
+		@BeforeTest
+		public void testDataSetup()  {
 				log.info("************** Starting test **************");
 		}
 		
 		@AfterTest
 		public void testDataCleanup(){
 				log.info("************** completed test **************");
-				driver.get().quit();
 		}
 		
 		@AfterClass(alwaysRun=true)
 		public void classDataCleaner(){
 				log.info("inside after class");
+				driver.get().quit();
 		}
 		
 		@AfterSuite
